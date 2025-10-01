@@ -3,16 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run generate:blog-list && next dev",
     "build": "next build && next export",
-    "start": "next start"
+    "start": "next start",
+    "prebuild": "node scripts/generate-blog-list-js.js",
+    "generate:blog-list": "node scripts/generate-blog-list-js.js"
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
     "@next/mdx": "^13.1.6",
+    "gray-matter": "^4.0.3",
     "next": "13.4.12",
+    "next-mdx-remote": "^5.0.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^6.1.17"
   },
   "alias": {
     "next-mdx-import-source-file": "./lib/next-mdx-import-source-file"

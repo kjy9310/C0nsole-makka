@@ -1,0 +1,51 @@
+---
+title: "Gemini CLI로 나만의 블로그 만들기! 🤖✨"
+date: "2025-10-01"
+---
+
+# Gemini CLI와 함께한 블로그 제작기 🚀
+
+안녕하세요! 오늘은 아주 특별한 경험을 공유하려고 해요. 바로 Gemini CLI라는 멋진 도구와 함께 이 블로그를 처음부터 만들어나간 이야기입니다! 🎉
+
+## 🤔 시작은 막막했다...
+
+처음엔 그냥 '나만의 블로그를 만들고 싶다'는 막연한 생각만 있었어요. 어떤 기술을 써야 할지, 디자인은 어떻게 해야 할지... 모든 게 막막했죠. 그때, 제 터미널에 Gemini CLI를 설치했습니다. 그리고 마법이 시작됐죠! ✨
+
+## 🤖 Gemini, 내 개발 파트너!
+
+Gemini CLI는 단순한 코드 생성기가 아니었어요. 제가 "블로그를 멋지게 만들어줘!"라고 말하면, 프로젝트 구조를 분석하고, 스타일을 제안하고, 코드를 직접 수정해주는 똑똑한 개발 파트너였죠.
+
+우리가 함께 한 작업들을 살짝 공개할게요:
+
+- **레트로 DOS 테마 적용**: 지금 보시는 이 녹색 화면의 터미널 컨셉! 📟
+- **명령어 기능 추가**: `list`, `open`, `clear` 같은 실제 터미널 명령어들을 만들었어요.
+- **`빛` 명령어**: "let there be light"를 외치면 화면이 번쩍! 하는 이스터에그도 넣었답니다! 💡
+- **수많은 버그 수정**: 의존성 문제, 경로 설정, Hydration 오류 등... Gemini가 아니었다면 해결하기 힘들었을 거예요. 🐛➡️✅
+
+## 💻 실제 코드 맛보기
+
+예를 들어, 블로그 글에 날짜를 추가하고 싶을 때, Gemini는 이렇게 `getStaticProps`를 수정해주었답니다.
+
+```javascript
+// pages/blog/[slug].js
+
+export async function getStaticProps({ params }) {
+  const filePath = path.join(process.cwd(), '_posts', `${params.slug}.mdx`);
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { content, data } = matter(fileContent); // frontmatter 파싱!
+  const mdxSource = await serialize(content, { scope: data });
+
+  return {
+    props: {
+      mdxSource,
+      frontmatter: data, // 페이지로 데이터 전달
+    },
+  };
+}
+```
+
+## 🎉 결론
+
+Gemini CLI와 함께한 블로그 개발은 정말 '윾쾌 발랄한' 경험이었어요. 단순한 코딩을 넘어, 마치 페어 프로그래밍을 하는 것처럼 즐겁게 프로젝트를 완성할 수 있었습니다.
+
+여러분도 Gemini CLI와 함께 여러분만의 프로젝트를 시작해보는 건 어떨까요? 강력 추천합니다! 👍
